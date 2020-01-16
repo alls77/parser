@@ -25,8 +25,8 @@ def get_article_detail(article_link: str):
         'title': ''.join(article.xpath("//article/div[contains(@class, 'post-title')]/h1/text() | "
                                        "//article/div/div[contains(@class, 'post-title')]/h1/text()")),
         'body': ''.join(article.xpath("//div[contains(@class, 'entry-content')]/p//text()")),
-        'images': article.xpath('//article//img/@src'),
-        'datePublished': ''.join(article.xpath('//time[contains(@class, "entry-date")]/@datetime')),
+        'images': article.xpath("//article//img[not(contains(@src,'svg'))]/@src"),
+        'datePublished': ''.join(article.xpath("//time[contains(@class, 'entry-date')]/@datetime")),
     }
 
 
